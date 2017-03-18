@@ -1,0 +1,20 @@
+var unirest = require("unirest");
+
+var req = unirest("POST", "https://api.evasrv.com/email_validate/");
+
+req.headers({
+  "content-type": "application/x-www-form-urlencoded",
+  "cache-control": "no-cache"
+});
+
+req.form({
+  "email": "test@domain.com",
+  "user_API_token": "YOUR-EV-API-TOKEN",
+  "": ""
+});
+
+req.end(function (res) {
+  if (res.error) throw new Error(res.error);
+
+  console.log(res.body);
+});
